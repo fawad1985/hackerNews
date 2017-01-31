@@ -1,0 +1,30 @@
+<template name="hackerNews">
+
+  <section class="m-t-lg">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+              <h2 class="font-uppercase"><span class="text-primary2">Best of </span>Hacker news</h2>
+              <button class="button btn-primary2 btn-lg m-t-sm">Get</button>
+              <p class="m-t-sm" style="display:{{countDisplay}}">
+              {{#unless eq postCount 500}}
+                Loading {{postCount}} <span class="animated infinite pulse ">posts</span>
+              {{ else }}
+                <span class="animated bounceIn"> Loaded {{postCount}} posts. </span>
+              {{/unless}}
+              </p>
+            </div>
+          </div>
+          <div class="row m-t-lg">
+            {{#if postCount}}
+              {{#each posts }}
+                {{>_post}}
+              {{/each}}
+            {{/if}}
+          </div>
+
+      </div>
+  </section>
+
+
+</template>
