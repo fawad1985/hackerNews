@@ -4,7 +4,7 @@ import './hackerNews.html';
 import './_post.html';
 import '../ui_helpers.js';
 
-Posts = new Mongo.Collection(null);
+var Posts = new Mongo.Collection(null);
 
 Template.hackerNews.helpers({
   postCount() {
@@ -23,10 +23,13 @@ Template.hackerNews.helpers({
 
 Template.hackerNews.events({
   'click button'(event, instance) {
-    if ( !Posts.find().count() ){
+    var count = Posts.find().count();
+    if ( !count ){
       getHackerNewsItems();
+    }else if (count == 500) {
+      toastr.success(`Sit back and relax dude, we've loaded all ${count} posts.`);
     }else{
-      toastr.success(`Easy on the gas buddy, we've already loaded ${Posts.find().count()} posts for you.`);
+      toastr.success(`Easy on the gas buddy, we've already loaded ${count} posts for you.`);
     }
   }
 });
