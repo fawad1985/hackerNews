@@ -26,7 +26,7 @@ Template.hackerNews.events({
     if ( !Posts.find().count() ){
       getHackerNewsItems();
     }else{
-      toastr.info(`Easy on the gas buddy, we've already loaded ${Posts.find().count()} posts for you.`);
+      toastr.success(`Easy on the gas buddy, we've already loaded ${Posts.find().count()} posts for you.`);
     }
   }
 });
